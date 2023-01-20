@@ -1,7 +1,7 @@
 package com.tetrisultimate.controller;
 
-import com.treeinrow.Constants;
-import com.treeinrow.Main;
+import com.tetrisultimate.Main;
+import com.tetrisultimate.game.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +23,7 @@ public class MenuController implements Initializable {
     @FXML public AnchorPane menuPane;
 
     public void startOnAction(ActionEvent actionEvent) {
-        GameController gameController = new GameController();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gameView.fxml"));
-        fxmlLoader.setController(gameController);
         Parent root;
         try {
             root = fxmlLoader.load();
@@ -34,25 +32,7 @@ public class MenuController implements Initializable {
             throw new RuntimeException(e);
         }
         Stage stage = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-        stage.setTitle("TreeInRow");
-        stage.setScene(new Scene(root));
-        stage.setWidth(600);
-        stage.setHeight(800);
-        gameController.start();
-    }
-
-    public void settingsOnAction(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("settingView.fxml"));
-        Parent root;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            System.err.println("setting load error");
-            throw new RuntimeException(e);
-        }
-        SettingController settingController = (SettingController)fxmlLoader.getController();
-        Stage stage = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-        stage.setTitle("Setting");
+        stage.setTitle("TetrisUltimate");
         stage.setScene(new Scene(root));
         stage.setWidth(600);
         stage.setHeight(800);
@@ -66,7 +46,7 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage myBI;
         try {
-            myBI = new BackgroundImage(new Image(new File("src/main/resources/com/treeinrow/images/background.png").toURI().toURL().toExternalForm(),600, 800,false,true),
+            myBI = new BackgroundImage(new Image(new File("src/main/resources/com/tetrisultimate/images/background.png").toURI().toURL().toExternalForm(),600, 800,false,true),
                     BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                     BackgroundSize.DEFAULT);
         } catch (MalformedURLException e) {
@@ -74,6 +54,6 @@ public class MenuController implements Initializable {
         }
         menuPane.setBackground(new Background(myBI));
 
-        Constants.ini(5, 8, 50);
+        //Constants.ini(5, 8, 50);
     }
 }

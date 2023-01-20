@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="gameScene" maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="655.0" minHeight="400.0" minWidth="420.0" prefHeight="650.0" prefWidth="600.0" style="-fx-background-color: #353535;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tetrisultimate.controller.GameController">
    <children>
-      <Label fx:id="scoreLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="206.0" layoutY="31.0" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: linear-gradient(#ff5400, #be1d00); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Score: " textAlignment="CENTER" wrapText="true">
+       <Pane fx:id="gameScene" layoutX="20.0" layoutY="20.0" prefHeight="609.0" prefWidth="300.0" style="-fx-background-color: rgb(0,0,0,1);" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <AnchorPane layoutX="209.0" prefHeight="168.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton buttonType="FLAT" focusTraversable="false" mnemonicParsing="false" onAction="#startOnAction" prefHeight="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/play.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Pane fx:id="nextItemView" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: rgb(0,0,0,1);;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0" />
+            <Label layoutX="50.0" layoutY="183.0" text="Score:" textFill="#717171">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="271.0" text="Line:" textFill="#717171">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="364.0" text="Level:" textFill="#717171">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreLabel" layoutX="51.0" layoutY="211.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lineLabel" layoutX="51.0" layoutY="297.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlLabel" layoutX="51.0" layoutY="390.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXCheckBox fx:id="gravityCheckBox" checkedColor="#717171" focusTraversable="false" layoutX="51.0" layoutY="432.0" mnemonicParsing="false" text="Gravity" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="gameOverLabel" focusTraversable="false" text="Game Over" textFill="WHITE" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="250.0">
          <font>
-            <Font size="20.0" />
+            <Font name="Fira Sans" size="43.0" />
          </font>
-         <opaqueInsets>
-            <Insets left="10.0" />
-         </opaqueInsets></Label>
+      </Label>
    </children>
-</Pane>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>
