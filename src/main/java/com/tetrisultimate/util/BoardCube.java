@@ -1,4 +1,6 @@
-package com.tetrisultimate.game;
+package com.tetrisultimate.util;
+
+import com.tetrisultimate.game.Cube;
 
 public class BoardCube {
     public Cube cube;

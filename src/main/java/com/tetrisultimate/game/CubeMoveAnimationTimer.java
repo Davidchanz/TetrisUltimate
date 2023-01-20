@@ -1,6 +1,6 @@
 package com.tetrisultimate.game;
 
-import javafx.animation.Animation;
+import com.tetrisultimate.util.Func;
 import javafx.animation.AnimationTimer;
 
 public class CubeMoveAnimationTimer extends AnimationTimer {

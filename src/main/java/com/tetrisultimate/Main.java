@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gameView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 655);
-        stage.setTitle("Menu");
+        stage.setTitle("TetrisUltimate");
         stage.setScene(scene);
         stage.show();
         stage.setMinHeight(670);

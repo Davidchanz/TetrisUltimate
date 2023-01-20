@@ -1,17 +1,12 @@
 package com.tetrisultimate.game;
 
 import com.tetrisultimate.controller.GameController;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
+import com.tetrisultimate.util.GameUtil;
 
 import java.util.ArrayList;
-import static com.tetrisultimate.game.Constants.size;
+import static com.tetrisultimate.util.Constants.size;
 
 public class TetrisItem{
-    private int type;
     private Cube[][] body;
     public double xPos, yPos;
     public int width, height;
@@ -30,7 +25,6 @@ public class TetrisItem{
             System.err.println("copy error");
             System.exit(1);
         }
-        this.type = type;
         this.xPos = x;
         this.yPos = y;
         iniBody();
@@ -45,10 +39,10 @@ public class TetrisItem{
     }
     public ArrayList<Cube> get(){
         ArrayList<Cube> result = new ArrayList<>();
-        for(int i = 0; i < body.length; i++){
-            for(int j = 0; j < body[0].length; j++){
-                if(body[i][j] != null)
-                    result.add(body[i][j]);
+        for (Cube[] cubes : body) {
+            for (int j = 0; j < body[0].length; j++) {
+                if (cubes[j] != null)
+                    result.add(cubes[j]);
             }
         }
         return result;
@@ -58,33 +52,33 @@ public class TetrisItem{
         var cubes = get();
         for (var cube: cubes){
             if(cube == cubes.get(cubes.size()-1))
-                cube.move(cube.getTranslateX(), cube.getTranslateY() + size, () -> {GameController.isMove.set(false);}, speed);
+                cube.move(cube.getTranslateX(), cube.getTranslateY() + size, () -> GameController.isMove.set(false), speed);
             else
                 cube.move(cube.getTranslateX(), cube.getTranslateY() + size, speed);
         }
         yPos+=size;
     }
-    public void moveDown(double y/*, Func foo*/) {
+    public void moveDown(double y) {
         var cubes = get();
         for (var cube: cubes){
             if(cube == cubes.get(cubes.size()-1))
-                cube.movePermanent(cube.getTranslateX(), cube.row*size + y/*, foo*/);
+                cube.movePermanent(cube.getTranslateX(), cube.row*size + y);
             else
                 cube.movePermanent(cube.getTranslateX(), cube.row*size + y);
         }
         yPos=y;
     }
-    public void moveLeft(/*Func foo*/) {
+    public void moveLeft() {
         var cubes = get();
         for (var cube: cubes){
             if(cube == cubes.get(cubes.size()-1))
-                cube.movePermanent(cube.getTranslateX() - size, cube.getTranslateY()/*, foo*/);
+                cube.movePermanent(cube.getTranslateX() - size, cube.getTranslateY());
             else
                 cube.movePermanent(cube.getTranslateX() - size, cube.getTranslateY());
         }
         xPos-=size;
     }
-    public void moveRight(/*Func foo*/) {
+    public void moveRight() {
         var cubes = get();
         for (var cube: cubes){
             if(cube == cubes.get(cubes.size()-1))
@@ -94,7 +88,6 @@ public class TetrisItem{
         }
         xPos+=size;
     }
-
     public void rotate() {
         int tmp = width;
         width = height;

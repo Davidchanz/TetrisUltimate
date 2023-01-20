@@ -1,11 +1,9 @@
 package com.tetrisultimate.game;
 
-import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 public class TetrisItemsCollection {
-    private static ArrayList<TetrisItemsCollectionElement> items = new ArrayList<>();
+    private static final ArrayList<TetrisItemsCollectionElement> items = new ArrayList<>();
     public static int count;
     static {
         Integer[][] body = {{1,1}, {1,1}};

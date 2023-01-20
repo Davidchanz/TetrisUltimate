@@ -1,4 +1,4 @@
-package com.tetrisultimate.game;
+package com.tetrisultimate.util;
 
 public class Constants {
     public static int colCount = 10;

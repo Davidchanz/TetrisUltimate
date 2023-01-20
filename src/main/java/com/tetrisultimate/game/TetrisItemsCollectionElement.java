@@ -1,16 +1,12 @@
 package com.tetrisultimate.game;
 
-import javafx.scene.paint.Color;
-
 public class TetrisItemsCollectionElement {
     public final int type;
-    private int col;
-    private int row;
     private final Cube[][] body;
     TetrisItemsCollectionElement(int type, Integer[][] body, String path){
         this.type = type;
-        this.col = body.length;
-        this.row = body[0].length;
+        int col = body.length;
+        int row = body[0].length;
         this.body = new Cube[col][row];
         for (int i = 0; i < col; i++){
             for (int j = 0; j < row; j++){
@@ -19,7 +15,6 @@ public class TetrisItemsCollectionElement {
             }
         }
     }
-
     public Cube[][] getBody() {
         return body;
     }
